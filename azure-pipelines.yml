@@ -7,7 +7,13 @@ jobs:
     vmImage: vs2017-win2016
   steps:
   - checkout: self
-
+# Copy Terraform Files into Artifacts Folder
+  - task: CopyFiles@2
+    displayName: Copy Terraform Files to Artifacts
+    inputs:
+      SourceFolder: .
+      TargetFolder: $(build.artifactstagingdirectory)
+  
     # Create Artifact for Release Consumption 
   - task: PublishBuildArtifacts@1
     displayName: Publish Combined Artifact

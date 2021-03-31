@@ -8,6 +8,6 @@ terraform {
     resource_group_name  = "rg-terraform-service"
     storage_account_name = "stbuildtfstate"
     container_name       = "resource-tag"
-    key                  = "github.tfstate"
+    key                  = "gitworkflow.tfstate"
   }
 }

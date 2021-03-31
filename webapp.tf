@@ -1,3 +1,12 @@
+resource "azurerm_resource_group" "main" {
+  name     = "rg-${var.app_name}-${var.environment}-${var.market}"
+  location = var.location
+  tags = {
+    application = var.app_name
+    environment = var.environment
+    market      = var.market
+  }
+}
 resource "azurerm_app_service_plan" "main" {
   name                = "asp-${var.app_name}-${var.environment}-${var.market}"
   location            = azurerm_resource_group.main.location

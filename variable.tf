@@ -1,4 +1,11 @@
 # application name 
+# azure region
+variable "location" {
+  type = string
+  description = "Azure region where resources will be created"
+  default = "uksouth"
+}
+
 variable "app_name" {
   type = string
   description = "The service name used to build resources"

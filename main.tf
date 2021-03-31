@@ -11,13 +11,3 @@ terraform {
     key                  = "github.tfstate"
   }
 }
-
-resource "azurerm_resource_group" "rg-hello-azure" {
-  name     = "rg-github-actions"
-  location = "uksouth"
-    tags = {
-    application = var.app_name
-    environment = var.environment
-    market      = var.market
-    }
-}

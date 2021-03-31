@@ -19,4 +19,5 @@ resource "azurerm_resource_group" "rg-hello-azure" {
     application = var.app_name
     environment = var.environment
     market      = var.market
+    }
 }

@@ -1,9 +1,9 @@
 provider "azurerm" {
-  version = "=2.0.0"
   features {}
 }
 
 terraform {
+  required_version = ">= 0.12" 
   backend "azurerm" {
     resource_group_name  = "rg-terraform-service"
     storage_account_name = "stbuildtfstate"

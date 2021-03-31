@@ -15,13 +15,13 @@ variable "app_name" {
 variable "environment" {
   type = string
   description = "The environment to be built"
-  default = "its"
+  default = "uat"
 }
 # market 
 variable "market" {
   type = string
   description = "The market"
-  default = "git"
+  default = "its"
 }
 
 # role assignment - reader 

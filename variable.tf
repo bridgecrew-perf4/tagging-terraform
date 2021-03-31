@@ -15,7 +15,7 @@ variable "app_name" {
 variable "environment" {
   type = string
   description = "The environment to be built"
-  default = "git"
+  default = "uat"
 }
 # market 
 variable "market" {

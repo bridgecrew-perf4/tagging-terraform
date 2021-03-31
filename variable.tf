@@ -13,6 +13,20 @@ variable "environment" {
 # market 
 variable "market" {
   type = string
-  description = "The slalom market"
+  description = "The market"
   default = "its"
 }
+
+# role assignment - reader 
+variable "role_reader" {
+  type = string
+  description = "Azure Role Assignment"
+  default = "reader"
+}
+# role assignment - tag contributor 
+variable "role_tag" {
+  type = string
+  description = "Azure Role Assignment"
+  default = "tag contributor"
+}
+

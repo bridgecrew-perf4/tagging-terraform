@@ -1,0 +1,17 @@
+
+name: $(date:yyyyMMdd)$(rev:.r)
+jobs:
+- job: create_artifacts
+  displayName: Terraform Artifact Creation
+  pool:
+    vmImage: vs2017-win2016
+  steps:
+  - checkout: self
+
+    # Create Artifact for Release Consumption 
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Combined Artifact
+    condition: succeededOrFailed()
+    inputs:
+      PathtoPublish: $(build.artifactstagingdirectory)
+      TargetPath: '\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)'

@@ -17,10 +17,10 @@ variable "environment" {
   description = "The environment to be built"
   default = "uat"
 }
-# market 
-variable "market" {
+# owner
+variable "owner" {
   type = string
-  description = "The market"
+  description = "the application owner"
   default = "its"
 }
 

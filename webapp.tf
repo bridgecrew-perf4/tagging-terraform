@@ -1,19 +1,19 @@
 resource "azurerm_resource_group" "main" {
-  name     = "rg-${var.app_name}-${var.environment}-${var.market}"
+  name     = "rg-${var.app_name}-${var.environment}-${var.owner}"
   location = var.location
   tags = {
     application = var.app_name
     environment = var.environment
-    market      = var.market
+    owner       = var.owner
   }
 }
 resource "azurerm_app_service_plan" "main" {
-  name                = "asp-${var.app_name}-${var.environment}-${var.market}"
+  name                = "asp-${var.app_name}-${var.environment}-${var.owner}"
   location            = azurerm_resource_group.main.location
   tags = {
     application = var.app_name
     environment = var.environment
-    market      = var.market
+    owner       = var.owner
   }
   resource_group_name = azurerm_resource_group.main.name
   kind                = "FunctionApp"
@@ -26,13 +26,13 @@ resource "azurerm_app_service_plan" "main" {
 }
 
 resource "azurerm_storage_account" "main" {
-  name                     = "st${var.app_name}${var.environment}${var.market}"
+  name                     = "st${var.app_name}${var.environment}${var.owner}"
   resource_group_name      = azurerm_resource_group.main.name
   location                 = azurerm_resource_group.main.location
   tags = {
     application = var.app_name
     environment = var.environment
-    market      = var.market
+    owner      = var.owner
   }
   account_kind             = "StorageV2"
   account_tier             = "Standard"
@@ -40,13 +40,13 @@ resource "azurerm_storage_account" "main" {
 }
 
 resource "azurerm_function_app" "main" {
-  name                      = "ft-${var.app_name}-${var.environment}-${var.market}"
+  name                      = "ft-${var.app_name}-${var.environment}-${var.owner}"
   resource_group_name       = azurerm_resource_group.main.name
   location                  = azurerm_resource_group.main.location
   tags = {
     application = var.app_name
     environment = var.environment
-    market      = var.market
+    owner      = var.owner
   }
   app_service_plan_id        = azurerm_app_service_plan.main.id
   storage_account_name       = azurerm_storage_account.main.name
@@ -64,13 +64,13 @@ resource "azurerm_function_app" "main" {
 }
 
 resource "azurerm_application_insights" "main" {
-  name                = "api-${var.app_name}-${var.environment}-${var.market}"
+  name                = "api-${var.app_name}-${var.environment}-${var.owner}"
   resource_group_name = azurerm_resource_group.main.name
   location            = azurerm_resource_group.main.location
   tags = {
     application = var.app_name
     environment = var.environment
-    market      = var.market
+    owner      = var.owner
   }
   application_type    = "web"
 }

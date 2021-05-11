@@ -16,7 +16,7 @@ jobs:
     inputs:
       command: init
       backendType: azurerm
-      backendServiceArm: 'spn-devops'
+      backendServiceArm: 'TI-CLOUDSERVICES-CLOUDDMZ-DEV-SC'
       ensureBackend: true
       backendAzureRmResourceGroupName: 'rg-terraform-service '
       backendAzureRmResourceGroupLocation: uksouth

@@ -11,3 +11,16 @@ jobs:
   steps:
   - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
     displayName: 'Use Terraform latest'
+  steps:
+  - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
+    displayName: 'terraform init'
+    inputs:
+      command: init
+      backendType: azurerm
+      backendServiceArm: 'spn-devops'
+      ensureBackend: true
+      backendAzureRmResourceGroupName: 'rg-terraform-service '
+      backendAzureRmResourceGroupLocation: uksouth
+      backendAzureRmStorageAccountName: stbuildtfstate
+      backendAzureRmContainerName: 'resource-tag'
+      backendAzureRmKey: github.tfstate

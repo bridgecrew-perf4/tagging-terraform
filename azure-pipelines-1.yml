@@ -9,19 +9,5 @@ jobs:
 - job: testing_tf
   displayName: "testingtf"
   steps:
-  - task: ms-devlabs.custom-terraform-tasks.custom-terraform-installer-task.TerraformInstaller@0
-    inputs:
-      terraformVersion: 'latest'
-      
-  - task: TerraformCLI@0
-    inputs:
-      command: 'init'
-      backendType: 'azurerm'
-      backendServiceArm: 'spn-devops'
-      ensureBackend: true
-      backendAzureRmResourceGroupName: 'rg-tf-init'
-      backendAzureRmResourceGroupLocation: 'uksouth'
-      backendAzureRmStorageAccountName: 'rgtfinittest'
-      backendAzureRmContainerName: 'terratest'
-      backendAzureRmKey: 'test.tfstate'
-      allowTelemetryCollection: true
+  - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-installer.TerraformInstaller@0
+    displayName: 'Use Terraform latest'

@@ -1,8 +1,3 @@
-# Starter pipeline
-
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
 
 trigger:
 - main
@@ -10,20 +5,23 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- task: TerraformInstaller@0
-  inputs:
-    terraformVersion: 'latest'
-    
-- task: TerraformCLI@0
-  inputs:
-    command: 'init'
-    backendType: 'azurerm'
-    backendServiceArm: 'spn-devops'
-    ensureBackend: true
-    backendAzureRmResourceGroupName: 'rg-tf-init'
-    backendAzureRmResourceGroupLocation: 'uksouth'
-    backendAzureRmStorageAccountName: 'rgtfinittest'
-    backendAzureRmContainerName: 'terratest'
-    backendAzureRmKey: 'test.tfstate'
-    allowTelemetryCollection: true
+jobs:
+- job: testing_tf
+  displayName: "testingtf"
+  steps:
+  - task: TerraformInstaller@0
+    inputs:
+      terraformVersion: 'latest'
+      
+  - task: TerraformCLI@0
+    inputs:
+      command: 'init'
+      backendType: 'azurerm'
+      backendServiceArm: 'spn-devops'
+      ensureBackend: true
+      backendAzureRmResourceGroupName: 'rg-tf-init'
+      backendAzureRmResourceGroupLocation: 'uksouth'
+      backendAzureRmStorageAccountName: 'rgtfinittest'
+      backendAzureRmContainerName: 'terratest'
+      backendAzureRmKey: 'test.tfstate'
+      allowTelemetryCollection: true

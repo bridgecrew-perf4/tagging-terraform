@@ -14,12 +14,10 @@ jobs:
   - task: charleszipp.azure-pipelines-tasks-terraform.azure-pipelines-tasks-terraform-cli.TerraformCLI@0
     displayName: 'terraform init'
     inputs:
-      command: init
-      backendType: azurerm
+      command: 'init'
+      backendType: 'azurerm'
       backendServiceArm: 'TI-CLOUDSERVICES-CLOUDDMZ-DEV-SC'
-      ensureBackend: true
       backendAzureRmResourceGroupName: 'rg-terraform-service '
-      backendAzureRmResourceGroupLocation: uksouth
       backendAzureRmStorageAccountName: stbuildtfstate
       backendAzureRmContainerName: 'resource-tag'
       backendAzureRmKey: github.tfstate
